@@ -1,0 +1,44 @@
+<HEAD>
+    <!-- Another line -->
+    <SCRIPT type="text/javascript" src="https://cdn.jsdelivr.net/npm/simple-crypto-js@2.5.0/dist/SimpleCrypto.min.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/aes.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/index.min.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></SCRIPT>
+    
+    <script src="jquery-1.11.1.js" type="text/javascript"></script>
+    <!-- Another line -->
+</HEAD>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        // basicEncryptionDecryption();
+        aesEncryptionDecryption();
+    });
+    function basicEncryptionDecryption(){
+        // Do your cryptographic logic here 
+        const secretKey = "some-unique-key"
+
+        const simpleCrypto = new SimpleCrypto(secretKey)
+
+        const plainText = "Hello World!"
+        const cipherText = simpleCrypto.encrypt(plainText)
+        console.log("Encryption process...")
+        console.log("Plain Text    : " + plainText)
+        console.log("Cipher Text   : " + cipherText)
+        const decipherText = simpleCrypto.decrypt(cipherText)
+        console.log("... and then decryption...")
+        console.log("Decipher Text : " + decipherText)
+        console.log("... done.")
+    }
+
+    function aesEncryptionDecryption(){
+        var ciphertext = CryptoJS.AES.encrypt('my message 123', 'secret key 123').toString();
+
+        // Decrypt
+        var bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+        var originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+        console.log(originalText); // 'my message'
+    }
+</script>
